@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.font-josefin {
+	font-family: var(--font-josefin-sans);
+}
+
+.font-geist {
+	font-family: var(--font-geist-sans);
+}
+
+.font-mono {
+	font-family: var(--font-geist-mono);
+}
