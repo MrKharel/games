@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { Options, Question, ResultPage } from "./components";
+import { useRouter } from "next/navigation";
+import { Options, Question } from "./components";
 import { useGameStore } from "./game_store";
 
 export interface RawTrivia {
@@ -23,11 +24,13 @@ export interface ReadymadeTrivia {
 
 interface Props {
 	trivias: Array<ReadymadeTrivia>;
+	slug: string;
 }
 
 export const GamePage = (props: Props) => {
 	const { trivias } = props;
 	const { setCurrentTrivia, answeredTrivias, setTrivias, resetTrivias } = useGameStore();
+	const router = useRouter();
 
 	useEffect(() => {
 		resetTrivias();
@@ -35,9 +38,11 @@ export const GamePage = (props: Props) => {
 		trivias && setCurrentTrivia(0);
 	}, []);
 
-	if (answeredTrivias.length === trivias.length) {
-		return <ResultPage />;
-	}
+	useEffect(() => {
+		if (answeredTrivias.length === trivias.length) {
+			router.push(`${props.slug}/results`);
+		}
+	}, [answeredTrivias.length]);
 
 	return (
 		<div className="">

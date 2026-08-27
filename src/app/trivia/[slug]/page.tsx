@@ -40,7 +40,7 @@ export default async function TriviaCategoryPage({ params }: Props) {
 				<Logo />
 			</header>
 			<main>
-				<GamePage trivias={readymadeTrivias} />
+				<GamePage trivias={readymadeTrivias} slug={slug} />
 			</main>
 		</div>
 	);

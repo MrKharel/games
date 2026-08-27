@@ -1,14 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { useGameStore } from "../game_store";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useGameStore } from "../game";
 
-export const ResultPage = () => {
-	const { answeredTrivias } = useGameStore();
+export const ResultsPage = () => {
+	const { answeredTrivias, trivias } = useGameStore();
+	const router = useRouter();
 	const [showAllAnswers, setShowAllAnswers] = useState(false);
 
 	const correctCount = answeredTrivias.filter((a) => a.isCorrect).length;
 	const total = answeredTrivias.length;
+
+	useEffect(() => {
+		if (answeredTrivias.length !== trivias.length) {
+			router.push("/trivia");
+		}
+	}, []);
 
 	return (
 		<div className="">
@@ -58,7 +66,7 @@ export const ResultPage = () => {
 			{/* Play again */}
 			<div className="flex justify-center pb-16">
 				<button
-					onClick={() => window.location.reload()}
+					onClick={() => router.back()}
 					className="rounded-md bg-gray-900 px-6 py-2.5 text-white font-medium hover:bg-gray-800 transition-colors">
 					Play Again
 				</button>
