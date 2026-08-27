@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.font-body {
+	font-family: var(--font-body);
+}
+.font-title {
+	font-family: var(--font-title);
+}
+.font-option {
+	font-family: var(--font-option);
+}
