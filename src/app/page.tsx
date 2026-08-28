@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function LandingPage() {
-	return <div>LandingPage</div>;
+	return redirect("/games");
 }

@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "funlittlegames" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className={`${nunito.variable} ${geist.variable} ${josefin.variable}`}>
-			<body className="font-body text-black/80">{children}</body>
+			<body className="bg-gray-100 dark:bg-neutral-900 text-black/80 dark:text-white/75 font-body">{children}</body>
 		</html>
 	);
 }
