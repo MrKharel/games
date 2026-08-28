@@ -1,22 +1,23 @@
+import { HashIcon, LightbulbIcon, WholeWordIcon } from "lucide-react";
 import { GameCard, type GameCard as GameCardType } from "../ui/GameCard";
 
 const gameCards: Array<GameCardType> = [
 	{
 		title: "Trivia",
-		icon: "",
+		icon: <LightbulbIcon size={26} />,
 		description: "You can't answer all the questions. I dare you to try, but don't even bother.",
 		href: "/trivia",
 	},
 	{
 		title: "Tic Tac Toe",
-		icon: "",
+		icon: <HashIcon size={26} />,
 		description: "Classic 3x3 strategy game, but with a twist if you want. Try it once. You'll love it.",
 		href: "/trivia",
 		commingSoonCard: true,
 	},
 	{
 		title: "Wordle",
-		icon: "",
+		icon: <WholeWordIcon size={26} />,
 		description: "Guess a five char long word. Test your knowledge of words and brag to your friends.",
 		href: "/trivia",
 		commingSoonCard: true,

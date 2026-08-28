@@ -31,3 +31,7 @@
 	--font-body: var(--font-nunito);
 	--font-geist: var(--font-geist);
 }
+
+* {
+	scrollbar-width: none;
+}
