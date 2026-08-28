@@ -39,8 +39,8 @@ export const TriviaGame = (props: GameProps) => {
 	}, []);
 
 	useEffect(() => {
-		if (props.trivias.length === answeredTrivias.length) {
-			router.push(`${props.currentPath}/results`);
+		if (props.trivias.length !== 0 && props.trivias.length === answeredTrivias.length) {
+			router.push(`/${props.currentPath}/results`);
 		}
 	}, [currentTrivia]);
 

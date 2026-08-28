@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 interface LogoProps {
-	title?: string;
+	title?: string | React.ReactNode;
 }
 
 export const Logo = (props: LogoProps) => {

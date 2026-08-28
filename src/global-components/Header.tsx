@@ -1,7 +1,7 @@
 import { Logo, Theme } from "../global-ui";
 
 interface HeaderProps {
-	logoText?: string;
+	logoText?: string | React.ReactNode;
 	includeTheme?: boolean;
 	children?: React.ReactNode;
 }

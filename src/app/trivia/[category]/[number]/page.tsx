@@ -40,7 +40,6 @@ export default async function TriviaGamePage({ params }: { params: Promise<{ cat
 	const res = await fetch(`https://opentdb.com/api.php?amount=${number}&category=${catId}&type=multiple`);
 	if (!res.ok) {
 		console.error("Fetching the trivias went wrong.");
-		notFound();
 	}
 
 	const result: Response = await res.json();
