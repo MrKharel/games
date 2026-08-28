@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-.font-body {
-	font-family: var(--font-body);
-}
-.font-title {
-	font-family: var(--font-title);
-}
-.font-geist {
-	font-family: var(--font-option);
-}
-
 :root {
 	--color-primary: #81bc62;
 
@@ -26,15 +16,8 @@
 	--color-primary-300: var(--color-primary-300);
 	--color-primary-500: var(--color-primary-500);
 	--color-primary-700: var(--color-primary-700);
-}
 
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	--font-title: var(--font-josefin);
+	--font-body: var(--font-nunito);
+	--font-geist: var(--font-geist);
 }
