@@ -1,34 +1,43 @@
 {
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "ES2017",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": false,
+		"skipLibCheck": false,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "react-jsx",
+		"incremental": true,
+		"noEmit": true,
+		"plugins": [{ "name": "next" }],
+		"paths": { "@/*": ["./src/*"] },
+
+		// --- Base strictness (this turns on all of the below automatically) ---
+		"strict": true,
+		// strict already implies: noImplicitAny, strictNullChecks, strictFunctionTypes,
+		// strictBindCallApply, strictPropertyInitialization, noImplicitThis,
+		// alwaysStrict, useUnknownInCatchVariables
+
+		// --- Extra checks NOT included in "strict" ---
+		"noUncheckedIndexedAccess": true, // arr[i] / obj[key] is T | undefined, not T
+		"exactOptionalPropertyTypes": true, // { a?: string } means "absent or string", not "absent, string, or undefined"
+		"noImplicitOverride": true, // must write `override` when overriding a base class member
+		"noImplicitReturns": true, // every code path in a function must explicitly return
+		"noFallthroughCasesInSwitch": true, // switch cases must break/return, no accidental fallthrough
+		"noPropertyAccessFromIndexSignature": true, // must use obj["key"] instead of obj.key for index-signature props
+		"noUnusedLocals": true, // error on unused local variables
+		"noUnusedParameters": true, // error on unused function parameters
+		"allowUnreachableCode": false, // error (not just warn) on unreachable code
+		"allowUnusedLabels": false, // error on unused labels
+		"forceConsistentCasingInFileNames": true, // catches import path casing bugs across OSes
+
+		// --- Module / interop correctness ---
+		"verbatimModuleSyntax": true, // forces explicit `import type` for type-only imports; avoids elision bugs
+		"isolatedDeclarations": false // leave off unless you're building a library — very invasive
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "**/*.mts"],
+	"exclude": ["node_modules"]
 }

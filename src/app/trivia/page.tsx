@@ -1,5 +1,5 @@
-import { TriviaHome } from "@/features/trivia/home";
+import { TriviaSetup } from "@/features/trivia/setup/";
 
-export default function trivia_page() {
-	return <TriviaHome />;
+export default function TriviaPage() {
+	return <TriviaSetup />;
 }

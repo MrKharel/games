@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function landing_page() {
-	redirect("/trivia");
+export default function LandingPage() {
+	return redirect("/games");
 }

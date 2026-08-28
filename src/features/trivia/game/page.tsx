@@ -1,63 +1,65 @@
 "use client";
 
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Options, Question } from "./components";
-import { useGameStore } from "./game_store";
+import { useEffect } from "react";
+import { Trivia } from "./components";
+import { useGameStore } from "./useGameStore";
+import { Header } from "@/global-components";
 
 export interface RawTrivia {
 	correct_answer: string;
 	incorrect_answers: Array<string>;
 	question: string;
 }
-
 export interface Response {
 	response_code: number;
 	results: Array<RawTrivia>;
 }
-
 export interface ReadymadeTrivia {
 	correctAnswer: string;
 	options: Array<string>;
 	question: string;
 }
-
-interface Props {
-	trivias: Array<ReadymadeTrivia>;
-	slug: string;
+export interface AnsweredTrivia extends ReadymadeTrivia {
+	userAnswer: string;
+	isCorrect: boolean;
 }
 
-export const GamePage = (props: Props) => {
-	const { trivias } = props;
-	const { setCurrentTrivia, answeredTrivias, setTrivias, resetTrivias } = useGameStore();
+interface GameProps {
+	trivias: Array<ReadymadeTrivia>;
+	currentPath: string;
+}
+
+export const TriviaGame = (props: GameProps) => {
+	const { setTrivias, resetGame, currentTrivia, answeredTrivias } = useGameStore();
 	const router = useRouter();
 
 	useEffect(() => {
-		resetTrivias();
-		setTrivias(trivias);
-		trivias && setCurrentTrivia(0);
+		resetGame();
+		setTrivias(props.trivias);
 	}, []);
 
 	useEffect(() => {
-		if (answeredTrivias.length === trivias.length) {
-			router.push(`${props.slug}/results`);
+		if (props.trivias.length !== 0 && props.trivias.length === answeredTrivias.length) {
+			router.push(`/${props.currentPath}/results`);
 		}
-	}, [answeredTrivias.length]);
+	}, [currentTrivia]);
 
 	return (
-		<div className="">
-			{trivias.map((trivia, index) => {
-				if (answeredTrivias.length === index) {
-					return (
-						<div key={index} className="pt-20 flex flex-col items-center gap-15">
-							<Question question={trivia.question} />
-							<Options correctOption={trivia.correctAnswer} allOptions={trivia.options} />
-						</div>
-					);
-				} else {
-					return null;
+		<>
+			<Header
+				logoText=<>
+					funlittle{""}
+					<span className="text-primary">trivias</span>
+				</>
+			/>
+
+			{props.trivias.map((trivia, index) => {
+				if (currentTrivia === index) {
+					return <Trivia key={index} {...trivia} />;
 				}
+				return null;
 			})}
-		</div>
+		</>
 	);
 };

@@ -1,13 +1,37 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-.font-josefin {
-	font-family: var(--font-josefin-sans);
+* {
+	scrollbar-width: none;
 }
 
-.font-geist {
-	font-family: var(--font-geist-sans);
+:root {
+	--color-primary: #81bc62;
+	--color-primary-50: #f1f7ed;
+	--color-primary-100: #ddedd4;
+	--color-primary-300: #81bc62;
+	--color-primary-500: #5e9640;
+	--color-primary-700: #3f642b;
 }
 
-.font-mono {
-	font-family: var(--font-geist-mono);
+.dark {
+	--color-primary: #81bc62;
+	--color-primary-50: #1c2917;
+	--color-primary-100: #253a1e;
+	--color-primary-300: #6ba852;
+	--color-primary-500: #8fca70;
+	--color-primary-700: #b8dfa4;
+}
+
+@theme {
+	--color-primary: var(--color-primary);
+	--color-primary-50: var(--color-primary-50);
+	--color-primary-100: var(--color-primary-100);
+	--color-primary-300: var(--color-primary-300);
+	--color-primary-500: var(--color-primary-500);
+	--color-primary-700: var(--color-primary-700);
+
+	--font-title: var(--font-josefin);
+	--font-body: var(--font-nunito);
+	--font-geist: var(--font-geist);
 }
