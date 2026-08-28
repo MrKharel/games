@@ -16,7 +16,7 @@ export const Trivia = (props: Trivia) => {
 		<>
 			<Question str={props.question} />
 
-			<div className="grid grid-cols 1 md:grid-cols-2 w-screen max-w-4xl py-6 self-center gap-8 px-20">
+			<div className="grid grid-cols 1 md:grid-cols-2 w-screen max-w-4xl py-6 self-center gap-8 px-8 md:px-20">
 				{props.options.map((option, index) => {
 					return (
 						<Option
