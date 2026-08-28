@@ -8,14 +8,14 @@ interface Trivia {
 
 export const Trivia = (props: Trivia) => {
 	return (
-		<div className="w-screen">
+		<>
 			<Question str={props.question} />
 
-			<div className="grid grid-cols-2 w-sm">
+			<div className="grid grid-cols 1 md:grid-cols-2 w-screen max-w-4xl py-6 self-center gap-8 px-20">
 				{props.options.map((option, index) => {
-					return <Option key={index} option={option} correctAnswer={props.correctAnswer} />;
+					return <Option key={index} option={option} correctAnswer={props.correctAnswer} index={index} />;
 				})}
 			</div>
-		</div>
+		</>
 	);
 };

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Trivia } from "./components";
 import { useGameStore } from "./useGameStore";
+import { Header } from "@/global-components";
 
 export interface RawTrivia {
 	correct_answer: string;
@@ -46,6 +47,8 @@ export const TriviaGame = (props: GameProps) => {
 
 	return (
 		<>
+			<Header />
+
 			{props.trivias.map((trivia, index) => {
 				if (currentTrivia === index) {
 					return <Trivia key={index} {...trivia} />;

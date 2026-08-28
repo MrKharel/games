@@ -38,7 +38,7 @@ export const TriviaResults = () => {
 								key={index}
 								className="flex items-start justify-between gap-4 border-b border-black/10 dark:border-white/8 p-4">
 								<div className="flex flex-col gap-1">
-									<h3 className="font-medium text-black/80 dark:text-white/75">{trivia.question}</h3>
+									<h3 className="font-title font-medium text-black/80 dark:text-white/75">{trivia.question}</h3>
 									<p className="text-sm text-black/40 dark:text-white/40">Your answer: {trivia.userAnswer}</p>
 								</div>
 
