@@ -7,18 +7,16 @@ interface OptionProps {
 	option: string;
 	correctAnswer: string;
 	index: number;
-	selectedAnswer: string;
-	setSelectedAnswer: React.Dispatch<React.SetStateAction<string>>;
+	selectedAnswer: string | null;
+	setSelectedAnswer: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const Option = (props: OptionProps) => {
 	const { trivias, currentTrivia, setCurrentTrivia, setAnsweredTrivias } = useGameStore();
-	const [isCorrect, setIsCorrect] = useState<null | boolean>(null);
 
 	const handleClick = () => {
 		const correct = props.option === props.correctAnswer;
 		props.setSelectedAnswer(props.option);
-		setIsCorrect(correct);
 
 		setTimeout(() => {
 			setAnsweredTrivias({
