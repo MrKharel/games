@@ -1,9 +1,5 @@
-import { Header } from "@/global-components";
+import { Games } from "@/features/games";
 
 export default function GamesPage() {
-	return (
-		<div className="">
-			<Header />
-		</div>
-	);
+	return <Games />;
 }

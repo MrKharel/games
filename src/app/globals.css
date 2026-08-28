@@ -3,7 +3,6 @@
 
 :root {
 	--color-primary: #81bc62;
-
 	--color-primary-50: #f1f7ed;
 	--color-primary-100: #ddedd4;
 	--color-primary-300: #81bc62;
@@ -11,7 +10,17 @@
 	--color-primary-700: #3f642b;
 }
 
+.dark {
+	--color-primary: #81bc62;
+	--color-primary-50: #1c2917;
+	--color-primary-100: #253a1e;
+	--color-primary-300: #6ba852;
+	--color-primary-500: #8fca70;
+	--color-primary-700: #b8dfa4;
+}
+
 @theme {
+	--color-primary: var(--color-primary);
 	--color-primary-50: var(--color-primary-50);
 	--color-primary-100: var(--color-primary-100);
 	--color-primary-300: var(--color-primary-300);
