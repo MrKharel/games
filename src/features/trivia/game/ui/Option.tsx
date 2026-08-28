@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useGameStore } from "../useGameStore";
 
 interface OptionProps {
