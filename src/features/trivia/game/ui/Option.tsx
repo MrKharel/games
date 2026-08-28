@@ -7,6 +7,8 @@ interface OptionProps {
 	option: string;
 	correctAnswer: string;
 	index: number;
+	selectedAnswer: string;
+	setSelectedAnswer: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Option = (props: OptionProps) => {
@@ -15,6 +17,7 @@ export const Option = (props: OptionProps) => {
 
 	const handleClick = () => {
 		const correct = props.option === props.correctAnswer;
+		props.setSelectedAnswer(props.option);
 		setIsCorrect(correct);
 
 		setTimeout(() => {
@@ -26,16 +29,22 @@ export const Option = (props: OptionProps) => {
 				isCorrect: correct,
 			});
 			setCurrentTrivia(currentTrivia + 1);
-		}, 500);
+		}, 1200);
 	};
 
 	return (
 		<button
 			onClick={handleClick}
-			className={`w-full py-3 px-4 rounded-xl shadow transition-colors duration-200 cursor-pointer text-left font-medium dark:shadow-white/10 text-center ${isCorrect === true ? "bg-green-500/20 text-green-700 dark:text-green-400 ring-2 ring-green-500" : isCorrect === false ? "bg-red-500/20 text-red-700 dark:text-red-400 ring-2 ring-red-500" : "bg-white/20 dark:bg-neutral-800 hover:bg-white/30 dark:hover:bg-neutral-700"}`}>
-			<span className="text-black/70 dark:text-white/70 uppercase">
-				{props.index == 0 ? "A." : props.index == 1 ? "B." : props.index == 2 ? "C." : "D."}
-			</span>{" "}
+			disabled={props.selectedAnswer !== null}
+			className={`w-full py-3 px-4 rounded-xl shadow transition-colors duration-200 text-left font-medium dark:shadow-white/10 ${
+				props.selectedAnswer === null
+					? "bg-white/20 dark:bg-neutral-800 hover:bg-white/30 dark:hover:bg-neutral-700 cursor-pointer"
+					: props.option === props.correctAnswer
+						? "bg-green-500/20 text-green-700 dark:text-green-400 ring-2 ring-green-500"
+						: props.option === props.selectedAnswer
+							? "bg-red-500/20 text-red-700 dark:text-red-400 ring-2 ring-red-500"
+							: "bg-white/20 dark:bg-neutral-800 opacity-50"
+			}`}>
 			{props.option}
 		</button>
 	);

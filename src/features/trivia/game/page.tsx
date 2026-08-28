@@ -47,7 +47,12 @@ export const TriviaGame = (props: GameProps) => {
 
 	return (
 		<>
-			<Header />
+			<Header
+				logoText=<>
+					funlittle{""}
+					<span className="text-primary">trivias</span>
+				</>
+			/>
 
 			{props.trivias.map((trivia, index) => {
 				if (currentTrivia === index) {
