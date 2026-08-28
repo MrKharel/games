@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+* {
+	scrollbar-width: none;
+}
+
 :root {
 	--color-primary: #81bc62;
 	--color-primary-50: #f1f7ed;
@@ -30,8 +34,4 @@
 	--font-title: var(--font-josefin);
 	--font-body: var(--font-nunito);
 	--font-geist: var(--font-geist);
-}
-
-* {
-	scrollbar-width: none;
 }
