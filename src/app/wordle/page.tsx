@@ -2,7 +2,7 @@ import { WordleGame } from "@/features/wordle/game";
 import { APIError } from "@/global-components";
 
 export default async function Page() {
-	const res = await fetch("https://random-word-api.herokuapp.com/word?length=5");
+	const res = await fetch("https://api.frontendexpert.io/api/fe/wordle-words");
 	if (!res.ok) {
 		return (
 			<APIError
@@ -18,6 +18,13 @@ export default async function Page() {
 			/>
 		);
 	}
+	const data: Array<string> = await res.json();
+	console.log(data);
+	const randomWord: string | undefined = data[Math.floor(Math.random() * data.length)];
 
-	return <WordleGame />;
+	if (randomWord == undefined) {
+		return null;
+	}
+
+	return <WordleGame word={randomWord} />;
 }

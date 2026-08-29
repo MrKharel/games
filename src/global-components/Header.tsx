@@ -13,7 +13,7 @@ export const Header = (props: HeaderProps) => {
 		<header className="flex justify-between items-center w-screen max-w-screen h-16 px-4">
 			<Logo title={props.logoText ? props.logoText : "funlittlegames"} />
 
-			<div className="">
+			<div className="flex gap-2 items-center">
 				{props.children}
 				{includeTheme && <Theme />}
 			</div>
