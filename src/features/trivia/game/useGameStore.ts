@@ -7,6 +7,7 @@ export interface GameStoreProps {
 	currentTrivia: number;
 	answeredTrivias: Array<AnsweredTrivia>;
 
+	initializeGame: (trivias: Array<ReadymadeTrivia>) => void;
 	setTrivias: (parameter: Array<ReadymadeTrivia>) => void;
 	setCurrentTrivia: (parameter: number) => void;
 	setAnsweredTrivias: (parameter: AnsweredTrivia) => void;
@@ -19,6 +20,10 @@ export const useGameStore = create<GameStoreProps>()(
 			trivias: [],
 			currentTrivia: 0,
 			answeredTrivias: [],
+
+			initializeGame: (trivias) => {
+				set({ trivias, currentTrivia: 0, answeredTrivias: [] });
+			},
 
 			setTrivias: (parameter) => {
 				set({ trivias: parameter });

@@ -1,5 +1,6 @@
-import { TriviaGame, type RawTrivia, type ReadymadeTrivia, type Response } from "@/features/trivia/game";
 import { notFound } from "next/navigation";
+import { TriviaGame, type RawTrivia, type ReadymadeTrivia, type Response } from "@/features/trivia/game";
+import { APIError } from "@/global-components";
 
 type Category = "gk" | "art" | "history";
 
@@ -39,7 +40,19 @@ export default async function TriviaGamePage({ params }: { params: Promise<{ cat
 
 	const res = await fetch(`https://opentdb.com/api.php?amount=${number}&category=${catId}&type=multiple`);
 	if (!res.ok) {
-		console.error("Fetching the trivias went wrong.");
+		return (
+			<APIError
+				title="Sorry bro (or sis)."
+				description={
+					<>
+						OpenTDB didn&apos;t respond properly.
+						<br />
+						Would you like to try again?{" "}
+					</>
+				}
+				href="/games"
+			/>
+		);
 	}
 
 	const result: Response = await res.json();
