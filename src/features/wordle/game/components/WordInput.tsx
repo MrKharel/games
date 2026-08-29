@@ -42,7 +42,7 @@ export const WordInput = ({ word }: { word: string }) => {
 
 	return (
 		<div className="flex flex-col items-center gap-4 p-6">
-			<div className="flex flex-col gap-2 justify-center items-center self-center p-6 rounded-2xl bg-neutral-200 dark:bg-neutral-900 transition-colors">
+			<div className="flex flex-col gap-2 justify-center items-center self-center p-6 rounded-2xl">
 				{grid.map((row: Array<string>, rowIndex: number) => (
 					<InputRow
 						key={rowIndex}
@@ -66,9 +66,7 @@ export const WordInput = ({ word }: { word: string }) => {
 							Solved in {lockedRows.length} {lockedRows.length === 1 ? "try" : "tries"}!
 						</p>
 					) : (
-						<p className="text-neutral-700 dark:text-neutral-300 font-bold text-lg">
-							The word was <span className="tracking-widest">{word.toUpperCase()}</span>
-						</p>
+						<p className="text-neutral-700 dark:text-neutral-300 font-bold text-lg">You lost.</p>
 					)}
 				</div>
 			)}

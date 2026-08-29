@@ -9,17 +9,16 @@ const gameCards: Array<GameCardType> = [
 		href: "/trivia",
 	},
 	{
-		title: "Tic Tac Toe",
-		icon: <HashIcon size={26} />,
-		description: "Classic 3x3 strategy game, but with a twist if you want. Try it once. You'll love it.",
-		href: "/trivia",
-		commingSoonCard: true,
-	},
-	{
 		title: "Wordle",
 		icon: <WholeWordIcon size={26} />,
 		description: "Guess a five char long word. Test your knowledge of words and brag to your friends.",
-		href: "/trivia",
+		href: "/wordle",
+	},
+	{
+		title: "Tic Tac Toe",
+		icon: <HashIcon size={26} />,
+		description: "Classic 3x3 strategy game, but with a twist if you want. Try it once. You'll love it.",
+		href: "/tictactoe",
 		commingSoonCard: true,
 	},
 ];
