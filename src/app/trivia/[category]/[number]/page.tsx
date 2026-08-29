@@ -1,4 +1,6 @@
 import { TriviaGame, type RawTrivia, type ReadymadeTrivia, type Response } from "@/features/trivia/game";
+import { Header } from "@/global-components";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Category = "gk" | "art" | "history";
@@ -39,7 +41,38 @@ export default async function TriviaGamePage({ params }: { params: Promise<{ cat
 
 	const res = await fetch(`https://opentdb.com/api.php?amount=${number}&category=${catId}&type=multiple`);
 	if (!res.ok) {
-		console.error("Fetching the trivias went wrong.");
+		return (
+			<>
+				<Header
+					logoText=<>
+						funlittle{""}
+						<span className="text-primary">error</span>
+					</>
+				/>
+
+				<div className="flex min-h-[60vh] items-center justify-center px-6">
+					<div className="w-full max-w-lg text-center">
+						<div className="mb-6 text-6xl">😵</div>
+
+						<h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
+							Sorry bro (or sis).
+						</h2>
+
+						<p className="mt-3 text-base leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-lg">
+							OpenTDB didn&apos;t respond properly.
+							<br />
+							Would you like to try again?
+						</p>
+
+						<Link
+							href="/games"
+							className="mt-7 inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]">
+							Try again
+						</Link>
+					</div>
+				</div>
+			</>
+		);
 	}
 
 	const result: Response = await res.json();

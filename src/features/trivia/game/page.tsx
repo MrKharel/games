@@ -31,19 +31,18 @@ interface GameProps {
 }
 
 export const TriviaGame = (props: GameProps) => {
-	const { setTrivias, resetGame, currentTrivia, answeredTrivias } = useGameStore();
+	const { trivias, answeredTrivias, initializeGame, currentTrivia } = useGameStore();
 	const router = useRouter();
 
 	useEffect(() => {
-		resetGame();
-		setTrivias(props.trivias);
-	}, []);
+		initializeGame(props.trivias);
+	}, [props.trivias, initializeGame]);
 
 	useEffect(() => {
-		if (props.trivias.length !== 0 && props.trivias.length === answeredTrivias.length) {
+		if (trivias.length > 0 && answeredTrivias.length > 0 && answeredTrivias.length === trivias.length) {
 			router.push(`/${props.currentPath}/results`);
 		}
-	}, [currentTrivia]);
+	}, [trivias.length, answeredTrivias.length, props.currentPath, router]);
 
 	return (
 		<>

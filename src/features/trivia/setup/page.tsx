@@ -1,13 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Header } from "@/global-components";
 import { Categories, TriviaNumber } from "./components";
+import { useGameStore } from "../game";
 
 export const TriviaSetup = () => {
+	const { resetGame } = useGameStore();
 	const [category, setCategory] = useState("gk");
 	const [range, setRange] = useState(12);
+
+	useEffect(() => {
+		resetGame();
+	}, []);
 
 	return (
 		<>
