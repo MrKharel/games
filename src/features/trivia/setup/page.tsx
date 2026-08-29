@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Header } from "@/global-components";
-import { Categories, TriviaNumber } from "./components";
+import { Header, SetupSection } from "@/global-components";
+import { TriviaNumber } from "./components";
 import { useGameStore } from "../game";
 
 export const TriviaSetup = () => {
@@ -20,7 +20,14 @@ export const TriviaSetup = () => {
 			<Header />
 
 			<div className="px-10 md:px-18">
-				<Categories chosen={category} setChosen={setCategory} />
+				<SetupSection
+					title={"Choose a category."}
+					buttons={[
+						{ label: "General Knowledge", value: "gk", chosen: category, setChosen: () => setCategory("gk") },
+						{ label: "Arts and Craft", value: "art", chosen: category, setChosen: () => setCategory("art") },
+						{ label: "World History", value: "history", chosen: category, setChosen: () => setCategory("history") },
+					]}
+				/>
 				<TriviaNumber range={range} setRange={setRange} />
 			</div>
 

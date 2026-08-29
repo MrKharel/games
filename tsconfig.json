@@ -38,6 +38,14 @@
 		"verbatimModuleSyntax": true, // forces explicit `import type` for type-only imports; avoids elision bugs
 		"isolatedDeclarations": false // leave off unless you're building a library — very invasive
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "**/*.mts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts",
+		"**/*.mts",
+		"src/global-components/SetupSec"
+	],
 	"exclude": ["node_modules"]
 }
